@@ -1,0 +1,24 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n        SELECT COUNT(*) as count \n        FROM reservation_tables rt\n        JOIN reservations r ON rt.reservation_id = r.id\n        WHERE rt.table_id = ANY($1) \n        AND (\n            r.time_slot BETWEEN $2::timestamp \n            AND ($2::timestamp + (r.time_limit || ' minutes')::interval)\n            OR\n            ($2::timestamp + ($3 || ' minutes')::interval) BETWEEN r.time_slot \n            AND (r.time_slot + (r.time_limit || ' minutes')::interval)\n        )\n        ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "count",
+        "type_info": "Int8"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "UuidArray",
+        "Timestamp",
+        "Text"
+      ]
+    },
+    "nullable": [
+      null
+    ]
+  },
+  "hash": "7a7bd2d4a3371f3664bbf8e348f7eef1e63380120f99300f6d9726e13ff84c5c"
+}

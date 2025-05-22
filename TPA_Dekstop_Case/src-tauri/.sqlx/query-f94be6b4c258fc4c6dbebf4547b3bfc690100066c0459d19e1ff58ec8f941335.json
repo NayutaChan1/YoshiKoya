@@ -1,0 +1,46 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            SELECT \n                menu_name, \n                image_base64, \n                address, \n                menu_type, \n                price \n            FROM menus\n            WHERE address = $1\n            ORDER BY menu_type, menu_name\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "menu_name",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 1,
+        "name": "image_base64",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 2,
+        "name": "address",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 3,
+        "name": "menu_type",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 4,
+        "name": "price",
+        "type_info": "Float8"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      true,
+      true,
+      true
+    ]
+  },
+  "hash": "f94be6b4c258fc4c6dbebf4547b3bfc690100066c0459d19e1ff58ec8f941335"
+}

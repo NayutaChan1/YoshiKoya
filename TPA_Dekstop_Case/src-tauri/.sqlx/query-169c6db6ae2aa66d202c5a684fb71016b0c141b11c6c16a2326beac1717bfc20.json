@@ -1,0 +1,69 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            INSERT INTO waiting_list (\n                user_id, address, customer_name, \n                people_count, requested_time, time_limit\n            )\n            VALUES ($1, $2, $3, $4, $5, $6)\n            RETURNING \n                id, \n                user_id, \n                address, \n                customer_name, \n                people_count, \n                requested_time as \"requested_time!\", \n                created_at as \"created_at!\",\n                time_limit\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 1,
+        "name": "user_id",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 2,
+        "name": "address",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 3,
+        "name": "customer_name",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 4,
+        "name": "people_count",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 5,
+        "name": "requested_time!",
+        "type_info": "Timestamp"
+      },
+      {
+        "ordinal": 6,
+        "name": "created_at!",
+        "type_info": "Timestamp"
+      },
+      {
+        "ordinal": 7,
+        "name": "time_limit",
+        "type_info": "Int4"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Text",
+        "Varchar",
+        "Int4",
+        "Timestamp",
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      false
+    ]
+  },
+  "hash": "169c6db6ae2aa66d202c5a684fb71016b0c141b11c6c16a2326beac1717bfc20"
+}

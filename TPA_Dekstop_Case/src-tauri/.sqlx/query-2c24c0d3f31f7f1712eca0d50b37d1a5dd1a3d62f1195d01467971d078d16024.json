@@ -1,0 +1,30 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            SELECT t.id, t.capacity\n            FROM tables t\n            JOIN reservations r ON r.address = $1\n            WHERE t.id NOT IN (\n                SELECT rt.table_id\n                FROM reservation_tables rt\n                JOIN reservations r ON rt.reservation_id = r.id\n                WHERE r.address = $1 \n                AND (\n                    r.time_slot BETWEEN $2::timestamp \n                    AND ($2::timestamp + make_interval(mins => r.time_limit))\n                    OR\n                    ($2::timestamp + make_interval(mins => $3)) BETWEEN r.time_slot \n                    AND (r.time_slot + make_interval(mins => r.time_limit))\n                )\n            )\n            ORDER BY t.capacity\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "capacity",
+        "type_info": "Int4"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text",
+        "Timestamp",
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "2c24c0d3f31f7f1712eca0d50b37d1a5dd1a3d62f1195d01467971d078d16024"
+}

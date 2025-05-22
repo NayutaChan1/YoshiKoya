@@ -1,0 +1,58 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            SELECT \n                id as \"id!\", \n                transaction_id as \"transaction_id!\", \n                menu_name as \"menu_name!\", \n                branch_address as \"branch_address!\", \n                price as \"price!\", \n                menu_type as \"menu_type!\", \n                quantity as \"quantity!\"\n            FROM transaction_items\n            WHERE transaction_id = $1\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id!",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 1,
+        "name": "transaction_id!",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 2,
+        "name": "menu_name!",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 3,
+        "name": "branch_address!",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 4,
+        "name": "price!",
+        "type_info": "Float8"
+      },
+      {
+        "ordinal": 5,
+        "name": "menu_type!",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 6,
+        "name": "quantity!",
+        "type_info": "Int4"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "15bd2d17c2097866c5204ca05bd6aa94798ea9dbc21102db1321f8d825c2062c"
+}

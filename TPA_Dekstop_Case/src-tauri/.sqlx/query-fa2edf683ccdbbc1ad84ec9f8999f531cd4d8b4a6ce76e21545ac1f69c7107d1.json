@@ -1,0 +1,19 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                INSERT INTO transaction_items (transaction_id, menu_name, branch_address, price, menu_type, quantity)\n                VALUES ($1, $2, $3, $4, $5, $6)\n                ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Text",
+        "Text",
+        "Float8",
+        "Text",
+        "Int4"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "fa2edf683ccdbbc1ad84ec9f8999f531cd4d8b4a6ce76e21545ac1f69c7107d1"
+}

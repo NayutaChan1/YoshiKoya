@@ -1,0 +1,35 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            SELECT DISTINCT rt.table_id, r.time_slot, r.address\n            FROM reservation_tables rt\n            JOIN reservations r ON rt.reservation_id = r.id\n            WHERE r.address = $1 \n            AND r.time_slot BETWEEN $2::timestamptz - INTERVAL '120 minutes' \n                   AND $2::timestamptz + INTERVAL '120 minutes'\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "table_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "time_slot",
+        "type_info": "Timestamp"
+      },
+      {
+        "ordinal": 2,
+        "name": "address",
+        "type_info": "Text"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text",
+        "Timestamptz"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      true
+    ]
+  },
+  "hash": "8b91a2d291967522a0eb04b477e1e52a539cc3989ce2f81071cc59e5244bcd77"
+}

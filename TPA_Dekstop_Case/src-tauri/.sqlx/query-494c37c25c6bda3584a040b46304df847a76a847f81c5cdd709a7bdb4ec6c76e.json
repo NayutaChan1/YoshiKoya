@@ -1,0 +1,69 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n        INSERT INTO reservations (user_id, address, customer_name, people_count, time_slot, time_limit)\n        VALUES ($1, $2, $3, $4, $5, $6)\n        RETURNING id, user_id, address, customer_name, people_count, time_slot, created_at, time_limit\n        ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "user_id",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 2,
+        "name": "address",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 3,
+        "name": "customer_name",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 4,
+        "name": "people_count",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 5,
+        "name": "time_slot",
+        "type_info": "Timestamp"
+      },
+      {
+        "ordinal": 6,
+        "name": "created_at",
+        "type_info": "Timestamp"
+      },
+      {
+        "ordinal": 7,
+        "name": "time_limit",
+        "type_info": "Int4"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Text",
+        "Text",
+        "Int4",
+        "Timestamp",
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      true,
+      true,
+      false,
+      false,
+      false,
+      true,
+      true
+    ]
+  },
+  "hash": "494c37c25c6bda3584a040b46304df847a76a847f81c5cdd709a7bdb4ec6c76e"
+}

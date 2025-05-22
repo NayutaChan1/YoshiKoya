@@ -1,0 +1,40 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            SELECT \n                branchname, \n                address, \n                operation_hours_open as \"opening_time?\",\n                operation_hours_close as \"closing_time?\"\n            FROM branches \n            WHERE address = $1\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "branchname",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 1,
+        "name": "address",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 2,
+        "name": "opening_time?",
+        "type_info": "Time"
+      },
+      {
+        "ordinal": 3,
+        "name": "closing_time?",
+        "type_info": "Time"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      true,
+      true
+    ]
+  },
+  "hash": "fb7727d83be2c2e43c110cb9f3af556315d1bf9c51d8dedf421b9e8a745f2a39"
+}

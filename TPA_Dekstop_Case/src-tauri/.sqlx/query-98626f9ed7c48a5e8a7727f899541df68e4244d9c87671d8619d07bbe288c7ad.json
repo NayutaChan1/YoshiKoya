@@ -1,0 +1,42 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            UPDATE branches \n            SET \n                operation_hours_open = $1,\n                operation_hours_close = $2\n            WHERE address = $3          -- Changed to match by address instead of branchname\n            RETURNING branchname, address, operation_hours_open as \"opening_time!\", operation_hours_close as \"closing_time!\"\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "branchname",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 1,
+        "name": "address",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 2,
+        "name": "opening_time!",
+        "type_info": "Time"
+      },
+      {
+        "ordinal": 3,
+        "name": "closing_time!",
+        "type_info": "Time"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Time",
+        "Time",
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      true,
+      true
+    ]
+  },
+  "hash": "98626f9ed7c48a5e8a7727f899541df68e4244d9c87671d8619d07bbe288c7ad"
+}
